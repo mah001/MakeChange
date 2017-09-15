@@ -8,59 +8,71 @@ using namespace std;
 
 int main()
 {
-	const double USD = 1.00;
-	const double QTR = 0.25;
-	const double DM = 0.10;
-	const double NI = 0.05;
-	double itemCost;
-	double amtPaid;
-	double x;
+	double nickles;
+	double dimes;
+	double quarters;
+	double dollars;
+	double cost;
+	double amount;
+	double changedue;
+
+	cout << "cost" << cost << endl;
+	cin >> cost;
+	cout << "amount" << amount << endl;
+	cin >> amount;
 
 
 
-	cout << "Please enter the Cost of the item: " << endl;
-	cin >> itemCost;
 
-	cout << "Please enter the amount paid: " << endl;
-	cin >> amtPaid;
-	if ((itemCost > 0) && (itemCost == amtPaid))
-
+	while (amount<cost)
 	{
-		cout << "next item;" << endl;
-	}
+		cout << "that is not enough you need " << (cost = cost - amount) << "more" << endl;
+		cin >> amount;
+		cout << "Please enter additional amount : " << (cost = cost - amount) << endl;
+		cin >> amount;
+		if (amount >= cost)
 
-	else if (itemCost <= amtPaid)
-
-	{
-		x = amtPaid - itemCost;
-		cout << " Item Price: " << "$" << itemCost << endl;
-		cout << "Amount Paid: " << "$" << amtPaid << endl;
-		cout << "change Due: " << "$" << x << endl;
-		cout << "Quarter(s) " << x / QTR << endl;
-		cout << "Dime(s) " << x / DM << endl;
-		cout << "Nickle(s) " << x / NI << endl;
+			break;
 
 	}
-	else
+	while (amount>cost)
 	{
-		while (itemCost != amtPaid)
+		cout << "Item Price: " << cost << endl;
+		cout << "amount Paid: " << amount << endl;
+		cout << "change due: " << (amount = amount - cost) << endl;
+		if (amount >= 1)
 		{
-			cout << "That is not enough! you need: " << "$" << (itemCost = itemCost - amtPaid) << " more!" << endl;
-			cin >> amtPaid;
+			cout << "Dollars " << (dollars = amount - dollars / 100) << endl;
+		}
+		else if ((amount<1) && (amount>0.25))
+		{
+			cout << "Quarters " << (quarters = amount - quarters / 25) << endl;
+
+		}
+		else if ((amount<0.25) && (amount>0.10))
+		{
+			cout << "nickles " << (nickles = amount - nickles / 10) << endl;
+
+		}
+		else if (amount<0.10)
+		{
+			cout << "dimes " << (dimes = amount - dimes / 10) << endl;
+
+		}
+		else
+		{
+			cout << "Next item" << endl;
+
+		}
+		if (cost != 0)
+		{
+			cout << "Please enter the cost of the Item (enter 0 to exit) : " << endl;
+			cin >> cost;
+			break;
 		}
 
+
 	}
-	cout << "press 0 to exit: " << endl;
-	cin >> x;
-	while (x != 0)
-	{
-		cout << x << endl;
-	}
-
-
-
 
 	return 0;
 }
-
-
